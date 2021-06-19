@@ -1,4 +1,4 @@
--*** Settings ***
+*** Settings ***
 #Dentro do documentation estarão presente informações a respeito do arquivo.
 Documentation    Aqui estaram presentes todos os exercícios do Prime Experts
 ...              focado em imersão com Robot.
@@ -60,6 +60,19 @@ Cenario: Meu Teste soma
     ${RESULTADO}    Somar dois numeros "55" e "44"
     Log To Console    ${RESULTADO}
 
+Cenario: Contando de 0 a 9
+    [Tags]    COUNT
+    FOR    ${count}    IN RANGE     0    10
+        Log To Console    ${count}
+    END
+
+Cenario: Imprimir Frutas da Lista
+    [Tags]    FRUTAS
+        @{FRUTAS}    Create List    Morango    Pera    Banana    Uva   
+    FOR    ${fruta}    IN     @{FRUTAS}
+        Log To Console    ${fruta}
+    END
+
 *** Keywords ***
 Somar dois numeros
     [Arguments]    ${NUM_A}    ${NUM_B}
@@ -70,3 +83,4 @@ Somar dois numeros
 Somar dois numeros "${NUM_A}" e "${NUM_B}"
     ${SOMA}    Evaluate    ${NUM_A}+${NUM_B}
     [Return]    ${SOMA}
+
